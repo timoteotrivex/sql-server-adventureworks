@@ -1,0 +1,36 @@
+/*=========================================================
+CONSULTA - GROUP BY + MAX()
+
+OBJETIVO DE NEGOCIO:
+El Gerente de Inventario necesita conocer el mayor nivel
+de stock registrado dentro de cada depósito.
+
+TABLA:
+Production.ProductInventory
+
+CONCEPTOS APLICADOS:
+- GROUP BY
+- MAX()
+- Alias de columnas
+
+RESULTADO ESPERADO:
+Devuelve el stock máximo agrupado por cada LocationID.
+
+KPI POWER BI:
+Stock Máximo por Depósito
+
+DIFICULTAD:
+Intermedio
+
+AUTOR:
+Timoteo Trivellini
+
+PROYECTO:
+SQL Server + AdventureWorks2022 + Power BI Portfolio
+=========================================================*/
+
+SELECT
+    LocationID AS [Depósito],
+    MAX(Quantity) AS [Stock Máximo]
+FROM Production.ProductInventory
+GROUP BY LocationID;
