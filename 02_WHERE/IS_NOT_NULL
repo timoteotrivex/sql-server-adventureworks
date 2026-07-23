@@ -1,0 +1,38 @@
+CONSULTA  - Búsqueda de registros con valores IS NOT NULL
+
+OBJETIVO DE NEGOCIO:
+El área de Recursos Humanos necesita identificar todas
+las personas que tienen un título registrado para una
+campaña de comunicación institucional.
+
+TABLA:
+Person.Person
+
+CONCEPTOS APLICADOS:
+- WHERE
+- IS NOT NULL
+- Alias de columnas
+- Columna calculada
+
+RESULTADO ESPERADO:
+Listado de personas con título registrado mostrando:
+ID, Nombre, Apellido, Título y Nombre Completo.
+
+DIFICULTAD:
+Básico
+
+AUTOR:
+Timoteo Trivellini
+
+PROYECTO:
+SQL Server + AdventureWorks2022 + Power BI Portfolio
+=========================================================*/
+
+SELECT
+    BusinessEntityID AS ID,
+    FirstName AS Nombre,
+    LastName AS Apellido,
+    Title AS Título,
+    FirstName + ' ' + LastName AS [Nombre Completo]
+FROM Person.Person
+WHERE Title IS NOT NULL;
