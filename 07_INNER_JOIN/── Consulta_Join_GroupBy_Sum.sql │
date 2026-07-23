@@ -1,0 +1,67 @@
+/*=========================================================
+CONSULTA  - INNER JOIN + GROUP BY + SUM()
+
+OBJETIVO DE NEGOCIO:
+El área comercial necesita identificar qué subcategorías
+generan mayor cantidad de unidades vendidas.
+
+TABLAS UTILIZADAS:
+- Sales.SalesOrderDetail
+- Production.Product
+- Production.ProductSubcategory
+
+RELACIONES:
+
+Sales.SalesOrderDetail.ProductID =
+Production.Product.ProductID
+
+Production.Product.ProductSubcategoryID =
+Production.ProductSubcategory.ProductSubcategoryID
+
+
+CONCEPTOS APLICADOS:
+- INNER JOIN múltiple
+- Alias de tablas
+- GROUP BY
+- SUM()
+- ORDER BY DESC
+
+
+RESULTADO ESPERADO:
+Devuelve las subcategorías ordenadas de mayor a menor
+según la cantidad total de unidades vendidas.
+
+
+KPI POWER BI:
+Unidades Vendidas por Subcategoría
+
+
+DIFICULTAD:
+Intermedio / Avanzado
+
+
+AUTOR:
+Timoteo Trivellini
+
+
+PROYECTO:
+SQL Server + AdventureWorks2022 + Power BI Portfolio
+=========================================================*/
+
+
+SELECT
+    PPS.Name AS [Subcategoría],
+    SUM(SS.OrderQty) AS [Unidades Vendidas]
+FROM Sales.SalesOrderDetail SS
+
+INNER JOIN Production.Product PP
+ON SS.ProductID = PP.ProductID
+
+INNER JOIN Production.ProductSubcategory PPS
+ON PP.ProductSubcategoryID = PPS.ProductSubcategoryID
+
+GROUP BY
+    PPS.Name
+
+ORDER BY
+    [Unidades Vendidas] DESC;
