@@ -1,0 +1,46 @@
+CONSULTA  - Desafío Integrador WHERE
+
+OBJETIVO DE NEGOCIO:
+El Gerente Comercial necesita identificar las personas
+que cumplan determinados criterios para una campaña
+de fidelización.
+
+TABLA:
+Person.Person
+
+CONCEPTOS APLICADOS:
+- WHERE
+- IN
+- LIKE
+- IS NOT NULL
+- BETWEEN
+- Alias de columnas
+- Columna calculada
+
+RESULTADO ESPERADO:
+Listado de personas de tipo EM o SP, cuyo apellido
+comience con "S", tengan un título registrado y su
+BusinessEntityID esté entre 100 y 500.
+
+DIFICULTAD:
+Integrador
+
+AUTOR:
+Timoteo Trivellini
+
+PROYECTO:
+SQL Server + AdventureWorks2022 + Power BI Portfolio
+=========================================================*/
+
+SELECT
+    BusinessEntityID AS ID,
+    FirstName AS Nombre,
+    LastName AS Apellido,
+    Title AS Título,
+    PersonType AS [Tipo de Persona],
+    FirstName + ' ' + LastName AS [Nombre Completo]
+FROM Person.Person
+WHERE PersonType IN ('EM', 'SP')
+  AND LastName LIKE 'S%'
+  AND Title IS NOT NULL
+  AND BusinessEntityID BETWEEN 100 AND 500;
