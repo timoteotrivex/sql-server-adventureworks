@@ -1,0 +1,37 @@
+/*=========================================================
+CONSULTA  - GROUP BY + MIN()
+
+OBJETIVO DE NEGOCIO:
+El Gerente de Inventario necesita conocer el stock mínimo
+registrado en cada depósito para identificar niveles bajos
+de inventario.
+
+TABLA:
+Production.ProductInventory
+
+CONCEPTOS APLICADOS:
+- GROUP BY
+- MIN()
+- Alias de columnas
+
+RESULTADO ESPERADO:
+Devuelve el stock mínimo agrupado por cada LocationID.
+
+KPI POWER BI:
+Stock Mínimo por Depósito
+
+DIFICULTAD:
+Intermedio
+
+AUTOR:
+Timoteo Trivellini
+
+PROYECTO:
+SQL Server + AdventureWorks2022 + Power BI Portfolio
+=========================================================*/
+
+SELECT
+    LocationID AS [Depósito],
+    MIN(Quantity) AS [Stock Mínimo]
+FROM Production.ProductInventory
+GROUP BY LocationID;
