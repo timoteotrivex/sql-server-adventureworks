@@ -1,0 +1,47 @@
+/*=========================================================
+CONSULTA - DESAFÍO INTEGRADOR GROUP BY
+
+OBJETIVO DE NEGOCIO:
+El Gerente de Inventario necesita un reporte ejecutivo
+que muestre el stock total y el stock promedio por
+depósito y estante.
+
+TABLA:
+Production.ProductInventory
+
+CONCEPTOS APLICADOS:
+- GROUP BY
+- SUM()
+- AVG()
+- ORDER BY
+- Alias de columnas
+
+RESULTADO ESPERADO:
+Devuelve el stock total y promedio para cada combinación
+de depósito y estante, ordenado de mayor a menor según
+el stock total.
+
+KPI POWER BI:
+Reporte Ejecutivo de Inventario
+
+DIFICULTAD:
+Intermedio
+
+AUTOR:
+Timoteo Trivellini
+
+PROYECTO:
+SQL Server + AdventureWorks2022 + Power BI Portfolio
+=========================================================*/
+
+SELECT
+    LocationID AS [Depósito],
+    Shelf AS [Estante],
+    SUM(Quantity) AS [Stock Total],
+    AVG(Quantity) AS [Stock Promedio]
+FROM Production.ProductInventory
+GROUP BY
+    LocationID,
+    Shelf
+ORDER BY
+    [Stock Total] DESC;
