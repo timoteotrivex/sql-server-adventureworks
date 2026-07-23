@@ -1,0 +1,39 @@
+/*=========================================================
+CONSULTA  - GROUP BY + ORDER BY
+
+OBJETIVO DE NEGOCIO:
+El Gerente de Inventario necesita visualizar un ranking
+de depósitos ordenados según el stock total disponible.
+
+TABLA:
+Production.ProductInventory
+
+CONCEPTOS APLICADOS:
+- GROUP BY
+- SUM()
+- ORDER BY
+- DESC
+
+RESULTADO ESPERADO:
+Devuelve el stock total por depósito ordenado de mayor
+a menor.
+
+KPI POWER BI:
+Ranking de Depósitos por Stock
+
+DIFICULTAD:
+Intermedio
+
+AUTOR:
+Timoteo Trivellini
+
+PROYECTO:
+SQL Server + AdventureWorks2022 + Power BI Portfolio
+=========================================================*/
+
+SELECT
+    LocationID AS [Depósito],
+    SUM(Quantity) AS [Stock Total]
+FROM Production.ProductInventory
+GROUP BY LocationID
+ORDER BY [Stock Total] DESC;
