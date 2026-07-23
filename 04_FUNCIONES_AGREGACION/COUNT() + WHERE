@@ -1,0 +1,34 @@
+CONSULTA  - COUNT() + WHERE
+
+OBJETIVO DE NEGOCIO:
+El Director de Recursos Humanos necesita conocer la
+cantidad total de empleados registrados en el sistema.
+
+TABLA:
+Person.Person
+
+CONCEPTOS APLICADOS:
+- COUNT(*)
+- WHERE
+- Alias de columnas
+
+RESULTADO ESPERADO:
+Devuelve el total de empleados (PersonType = 'EM').
+
+KPI POWER BI:
+Total de Empleados
+
+DIFICULTAD:
+Básico
+
+AUTOR:
+Timoteo Trivellini
+
+PROYECTO:
+SQL Server + AdventureWorks2022 + Power BI Portfolio
+=========================================================*/
+
+SELECT
+    COUNT(*) AS [Total de Empleados]
+FROM Person.Person
+WHERE PersonType = 'EM';
